@@ -1,15 +1,17 @@
 const fs = require("fs");
 
-const input = "testInput.txt";
-// const input = "trueInput.txt";
+// const input = "testInput.txt";
+const input = "trueInput.txt";
 
 const testInput = fs.readFileSync(`${input}`, "utf8", (err, data) => {
 	if (err) console.error(err);
 	else return data;
 });
 
-let splitInput = testInput.split("\n");
-//console.log(splitInput);
+let splitInput = testInput.split("\n"); // crossword
+// console.log('splitInput\t', splitInput);
+
+
 
 // puzzle width and height
 const width = splitInput[0].length;
@@ -65,14 +67,14 @@ class CrossWord {
     }
     regex(str) {
         const regex = /samxmas|xmasamx|xmas|samx/gi
-        const count = str.match(regex)?.length || 0;
+        const c = str.match(regex)?.length || 0;
         const checkForDoubleXmas = str.match(regex);
-        if (count !== 0) {
+        if (c !== 0) {
             if (checkForDoubleXmas.includes("SAMXMAS") || checkForDoubleXmas.includes("XMASAMX")) {
                 this.count += 1; // ADDITIONAL COUNT FOR DOUBLES
             }
         }
-        this.count += count;
+        this.count += c;
     }
     doubleLoop(el, aux) {
         for (let x = 0; x < this.width; x++) {
@@ -90,6 +92,7 @@ class CrossWord {
     }
     getCount() {
         console.log("Count:\t", this.count);
+        // 2468 too low...
     }
 }
 const crossword = new CrossWord(splitInput, width, height);
@@ -97,10 +100,11 @@ const crossword = new CrossWord(splitInput, width, height);
 crossword
     .processHorizontal()
     .processVertical()
-    .processDiagonal()
     .getCount();
 
 
 // hori - 5
 // vert - 3+
 // diag - 1 (on i=0)
+
+module.exports = { CrossWord, splitInput };
