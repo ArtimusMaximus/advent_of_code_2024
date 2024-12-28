@@ -1,7 +1,7 @@
 const fs = require("fs");
 
-// const input = "testInput.txt";
-const input = "trueInput.txt";
+const input = "testInput.txt";
+// const input = "trueInput.txt";
 
 const testInput = fs.readFileSync(`${input}`, "utf8", (err, data) => {
 	if (err) console.error(err);
@@ -71,21 +71,6 @@ class CrossWord {
         const c = str.match(regex)?.length || 0;
         const checkForDoubleXmas = str.match(regex);
         if (c !== 0) {
-            // if (checkForDoubleXmas.includes("SAMXMASAMXMASAMX")) {
-            //     const checkHowMany = checkForDoubleXmas.some(arr => arr.includes("SAMXMASAMXMASAMX"));
-            //     this.count += 5
-            // } else if (checkForDoubleXmas.includes("XMASAMXMASAMX") || checkForDoubleXmas.includes("SAMXMASAMXMAS")) {
-            //     const checkHowMany = checkForDoubleXmas.some(arr => arr.includes("XMASAMXMASAMX"));
-            //     this.count += 4
-            // } else if (checkForDoubleXmas.includes("XMASAMXMAS") || checkForDoubleXmas.includes("SAMXMASAMX")) {
-            //     this.count += 3
-            // } else if (checkForDoubleXmas.includes("SAMXMAS") || checkForDoubleXmas.includes("XMASAMX")) {
-            //     this.count += 2
-            // } else if (checkForDoubleXmas.includes("XMAS") || checkForDoubleXmas.includes("SAMX")) {
-            //     const checkHowMany = checkForDoubleXmas.some(arr => arr.includes("XMAS"));
-            //     console.log(typeof checkHowMany)
-            //         this.count += 1; // ADDITIONAL COUNT FOR DOUBLES
-            // }
             const totals = this.countRegexArr(checkForDoubleXmas);
             const arrNums = Object.values(totals);
             function sum(a,b) { return a+b; }
@@ -140,13 +125,13 @@ class CrossWord {
         return obj;
     }
 }
-const crossword = new CrossWord(splitInput, width, height);
+// const crossword = new CrossWord(splitInput, width, height);
 
-crossword
-    .processHorizontal()
-    .processVertical()
-    .getWidthHeight()
-    .getCount();
+// crossword
+//     .processHorizontal()
+//     .processVertical()
+//     .getWidthHeight()
+//     .getCount();
 
 
 // hori - 5

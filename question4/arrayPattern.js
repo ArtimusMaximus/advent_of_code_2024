@@ -1,4 +1,4 @@
-const { CrossWord, splitInput } = require("./q4.js");
+const { CrossWord } = require("./q4.js");
 
 let arrs = [
 	[2,3,4,5,1],
@@ -35,8 +35,8 @@ const arrayPatternLeft = [
 
 class DiagonalHandler extends CrossWord {
     constructor(crossword) {
-        super();
-        this.crossword = crossword;
+        super(crossword);
+        // this.crossword = crossword;
         this.reverseArr = [];
         this.leftDiagonalArr = [];     // starts from top left e.g. [/]
         this.rightDiagonalArr = [];    // does [\] but by using a reverse array, so still: [/]
@@ -94,20 +94,20 @@ class DiagonalHandler extends CrossWord {
     }
 }
 
-const diagHandler = new DiagonalHandler(splitInput);
+// const diagHandler = new DiagonalHandler(splitInput);
 
-diagHandler
-    .deepCopyForReverseArr()
-    .leftDiagonal(false)
-    .leftDiagonal(true)
-    .processDiagonals()
+// diagHandler
+//     .deepCopyForReverseArr()
+//     .leftDiagonal(false)
+//     .leftDiagonal(true)
+//     .processDiagonals()
+    // .getDiagonals();
     // .processHorizontal()
     // .processVertical()
-    .getCount();
+    // .getCount();
 
-module.exports = {
-    DiagonalHandler
-}
+module.exports = DiagonalHandler;
+
 // todos:
 //      make a deep copy reverse function - check
 //      check functions are ready to ship - check
